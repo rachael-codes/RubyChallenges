@@ -11,7 +11,7 @@ class SumTest < Minitest::Test
   end
 
   def test_sum_to_10
-    assert_equal 23, SumOfMultiples.to(10) # 3 5 
+    assert_equal 23, SumOfMultiples.to(10) # 3 5
   end
 
   def test_sum_to_100

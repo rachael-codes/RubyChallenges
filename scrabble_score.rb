@@ -1,58 +1,58 @@
-# Program: Scrabble Score 
+# Program: Scrabble Score
 # Date: 04/12/21
 
 # Write a program that, given a word, computes the Scrabble score for that word.
 
 # My solution
 class Scrabble
-	def initialize(word)
-		@word = word ? word : ''
-	end 
+  def initialize(word)
+    @word = word ? word : ''
+  end
 
-	def self.score(word)
-		Scrabble.new(word).score
-	end 
+  def self.score(word)
+    Scrabble.new(word).score
+  end
 
-	def score 
-		score = 0
-		word.chars.each do |char|
-			if char.match?(/[AEIOULNRST]/i)
-				score += 1
-			elsif char.match?(/[DG]/i)
-				score += 2 
-			elsif char.match?(/[BCMP]/i)
-				score += 3
-			elsif char.match?(/[FHVWY]/i)
-				score += 4
-			elsif char.match?(/[K]/i)
-				score += 5
-			elsif char.match?(/[JX]/i)
-				score += 8 
-			elsif char.match?(/[QZ]/i) 
-				score += 10
-			end
-		end 
-		score 
-	end 
+  def score
+    score = 0
+    word.chars.each do |char|
+      if char.match?(/[AEIOULNRST]/i)
+        score += 1
+      elsif char.match?(/[DG]/i)
+        score += 2
+      elsif char.match?(/[BCMP]/i)
+        score += 3
+      elsif char.match?(/[FHVWY]/i)
+        score += 4
+      elsif char.match?(/[K]/i)
+        score += 5
+      elsif char.match?(/[JX]/i)
+        score += 8
+      elsif char.match?(/[QZ]/i)
+        score += 10
+      end
+    end
+    score
+  end
 
-	private 
+  private
 
-	attr_reader :word 
-end 
+  attr_reader :word
+end
 
 # LS solution
 class Scrabble
   attr_reader :word
 
   POINTS = {
-    'AEIOULNRST'=> 1,
+    'AEIOULNRST' => 1,
     'DG' => 2,
     'BCMP' => 3,
     'FHVWY' => 4,
     'K' => 5,
     'JX' => 8,
     'QZ' => 10
-}
+  }
   def initialize(word)
     @word = word ? word : ''
   end

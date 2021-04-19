@@ -49,7 +49,7 @@ class AnagramTest < Minitest::Test
   def test_multiple_anagrams
     detector = Anagram.new('allergy')
     anagrams =
-      detector.match %w( gallery ballerina regally clergy largely leading)
+      detector.match %w(gallery ballerina regally clergy largely leading)
     assert_equal %w(gallery largely regally), anagrams.sort
   end
 

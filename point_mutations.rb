@@ -8,34 +8,34 @@
 #     GAGCCTACTAACGGGAT
 #     CATCGTAATGACGGCCT
 #     ^ ^ ^  ^ ^    ^^
-# = 7 
+# = 7
 
 # Input: two strings
-# Output: integer that reps the # of differences 
+# Output: integer that reps the # of differences
 
 # EXPLICIT
-# The Hamming distance is only defined for sequences of equal length. 
+# The Hamming distance is only defined for sequences of equal length.
 # If you have two sequences of unequal length, you should compute the Hamming distance over the shorter length.
 
 class DNA
   def initialize(dna_string)
     @dna_string = dna_string
-  end 
+  end
 
   def hamming_distance(dna_to_compare)
-    total_differences = 0 
+    total_differences = 0
     shorter = dna_string.size >= dna_to_compare.size ? dna_to_compare : dna_string
     counter = 0
 
-    until counter == shorter.size  
+    until counter == shorter.size
       total_differences += 1 if dna_string[counter] != dna_to_compare[counter]
       counter += 1
-    end 
+    end
 
     total_differences
-  end 
+  end
 
-  private 
+  private
 
   attr_reader :dna_string
-end 
+end

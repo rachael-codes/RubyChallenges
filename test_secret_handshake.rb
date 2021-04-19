@@ -1,23 +1,22 @@
-
 require 'minitest/autorun'
 require_relative 'secret_handshake'
 
 class SecretHandshakeTest < Minitest::Test
   def test_handshake_1_to_wink
-    handshake = SecretHandshake.new(1) # binary - 1 
+    handshake = SecretHandshake.new(1) # binary - 1
     assert_equal ['wink'], handshake.commands
-    #wink = 1
+    # wink = 1
   end
 
-  # decimal -> program finds in binary -> interprets binary and returns an array of commands that correspond to places in the binary number 
+  # decimal -> program finds in binary -> interprets binary and returns an array of commands that correspond to places in the binary number
   def test_handshake_10_to_double_blink
-    handshake = SecretHandshake.new(2) # binary - 10 (2 places) 
+    handshake = SecretHandshake.new(2) # binary - 10 (2 places)
     assert_equal ['double blink'], handshake.commands
     # 10
   end
 
   def test_handshake_100_to_close_your_eyes
-    handshake = SecretHandshake.new(4) # binary - 100 
+    handshake = SecretHandshake.new(4) # binary - 100
     assert_equal ['close your eyes'], handshake.commands
   end
 
@@ -27,7 +26,7 @@ class SecretHandshakeTest < Minitest::Test
   end
 
   def test_handshake_11_to_wink_and_double_blink
-    handshake = SecretHandshake.new(3) # binary - 11 (10 + 1) 
+    handshake = SecretHandshake.new(3) # binary - 11 (10 + 1)
     assert_equal ['wink', 'double blink'], handshake.commands
   end
 

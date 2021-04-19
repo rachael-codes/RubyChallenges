@@ -1,39 +1,39 @@
-# Program: Beer Song 
+# Program: Beer Song
 # Date: 04/13/21
 
-# My solution 
+# My solution
 module MessagesForTwoOrFewerBottles
-	TWO_BOTTLE_MESSAGE = "2 bottles of beer on the wall, 2 bottles of beer.\n" + 
-	"Take one down and pass it around, 1 bottle of beer on the wall.\n" 
+  TWO_BOTTLE_MESSAGE = "2 bottles of beer on the wall, 2 bottles of beer.\n" +
+                       "Take one down and pass it around, 1 bottle of beer on the wall.\n"
 
-	ONE_BOTTLE_MESSAGE = "1 bottle of beer on the wall, 1 bottle of beer.\n" + 
-	"Take it down and pass it around, no more bottles of beer on the wall.\n" 
+  ONE_BOTTLE_MESSAGE = "1 bottle of beer on the wall, 1 bottle of beer.\n" +
+                       "Take it down and pass it around, no more bottles of beer on the wall.\n"
 
-	ZERO_BOTTLE_MESSAGE = "No more bottles of beer on the wall, no more bottles of beer.\n"
-	"Go to the store and buy some more, 99 bottles of beer on the wall.\n"
-end 
+  ZERO_BOTTLE_MESSAGE = "No more bottles of beer on the wall, no more bottles of beer.\n"
+  "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
+end
 
 class BeerSong
-	include MessagesForTwoOrFewerBottles
+  include MessagesForTwoOrFewerBottles
 
-	def self.verse(*numbers)
-		range = (numbers.last..numbers.first).to_a.reverse
-		range.each do |num|
-			case verse 
-			when 2 			then puts TWO_BOTTLE_MESSAGE
-			when 1 			then puts ONE_BOTTLE_MESSAGE
-			when 0 			then puts ZERO_BOTTLE_MESSAGE
-			else 
-				puts "#{num} bottles of beer on the wall, #{num} bottles of beer."
-				puts "Take one down and pass it around, #{num-1} bottles of beer on the wall.\n\n"
-			end 
-		end 
-	end 
+  def self.verse(*numbers)
+    range = (numbers.last..numbers.first).to_a.reverse
+    range.each do |num|
+      case verse
+      when 2 			then puts TWO_BOTTLE_MESSAGE
+      when 1 			then puts ONE_BOTTLE_MESSAGE
+      when 0 			then puts ZERO_BOTTLE_MESSAGE
+      else
+        puts "#{num} bottles of beer on the wall, #{num} bottles of beer."
+        puts "Take one down and pass it around, #{num - 1} bottles of beer on the wall.\n\n"
+      end
+    end
+  end
 
-	def self.lyrics
-		self.verse(99,0)
-	end 
-end 
+  def self.lyrics
+    self.verse(99, 0)
+  end
+end
 
 # LS Solution
 class Verse
@@ -60,26 +60,26 @@ class Verse
 
   def default_verse
     "#{bottles} bottles of beer on the wall, #{bottles}" +
-    " bottles of beer.\nTake one down and pass it around, " +
-    "#{bottles-1} bottles of beer on the wall.\n"
+      " bottles of beer.\nTake one down and pass it around, " +
+      "#{bottles - 1} bottles of beer on the wall.\n"
   end
 
   def two_bottle_verse
     "2 bottles of beer on the wall, 2 bottles of beer.\n" +
-    "Take one down and pass it around, 1 bottle of beer " +
-    "on the wall.\n"
+      "Take one down and pass it around, 1 bottle of beer " +
+      "on the wall.\n"
   end
 
   def single_bottle_verse
     "1 bottle of beer on the wall, 1 bottle of beer.\n" +
-    "Take it down and pass it around, no more bottles of beer " +
-    "on the wall.\n"
+      "Take it down and pass it around, no more bottles of beer " +
+      "on the wall.\n"
   end
 
   def zero_bottle_verse
     "No more bottles of beer on the wall, no more bottles " +
-    "of beer.\nGo to the store and buy some more, 99 bottles " +
-    "of beer on the wall.\n"
+      "of beer.\nGo to the store and buy some more, 99 bottles " +
+      "of beer on the wall.\n"
   end
 end
 

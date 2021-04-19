@@ -34,7 +34,6 @@ class SeriesTest < Minitest::Test
   end
 
   def test_simple_slices_of_three_again
-
     series = Series.new('31001')
     assert_equal [[3, 1, 0], [1, 0, 0], [0, 0, 1]], series.slices(3)
   end
@@ -46,7 +45,6 @@ class SeriesTest < Minitest::Test
   end
 
   def test_simple_slices_of_four
-
     series = Series.new('01234')
     assert_equal [[0, 1, 2, 3], [1, 2, 3, 4]], series.slices(4)
   end
