@@ -3,9 +3,10 @@
 # Date: 04/18/21
 
 # INSTRUCTIONS
-# Write a program that will convert a trinary number, represented as a string (e.g. '102012'), to its
-# decimal equivalent using first principles (without using an existing method or library that can work
-# with numeral systems).
+# Write a program that will convert a trinary number, represented as
+# a string (e.g. '102012'), to its decimal equivalent using first principles
+# (without using an existing method or library that can work with numeral
+# systems).
 
 # to_decimal ALGORITHM
 # convert num into digits + iterate over digits w/ index and map

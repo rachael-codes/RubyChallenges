@@ -3,7 +3,7 @@
 
 # Write a program that, given a word, computes the Scrabble score for that word.
 
-# My solution
+# My original solution - fails Rubocop 
 class Scrabble
   def initialize(word)
     @word = word ? word : ''
@@ -16,7 +16,7 @@ class Scrabble
   def score
     score = 0
     word.chars.each do |char|
-      if char.match?(/[AEIOULNRST]/i)
+      when char.match?(/[AEIOULNRST]/i)
         score += 1
       elsif char.match?(/[DG]/i)
         score += 2
@@ -40,7 +40,7 @@ class Scrabble
   attr_reader :word
 end
 
-# LS solution
+# LS solution (doesn't fail Rubocop)
 class Scrabble
   attr_reader :word
 
@@ -62,8 +62,8 @@ class Scrabble
 
     total = 0
     letters.each do |letter|
-      POINTS.each do |all_letters, point|
-        total += point if all_letters.include?(letter)
+      POINTS.each do |letter_options, point|
+        total += point if letter_options.include?(letter)
       end
     end
     total
@@ -74,7 +74,7 @@ class Scrabble
   end
 end
 
-# Another good solution
+# A good student solution
 class Scrabble
   def initialize(word)
     @word = word.is_a?(String) ? word : ''
@@ -90,7 +90,7 @@ class Scrabble
 
   private
 
-  def letter_value(char)
+  def letter_value(char) #Note: Rubocop complains about Cyclomatic complexity
     case char
     when /[^A-Z]/i then 0
     when /[AEIOULNRST]/i then 1

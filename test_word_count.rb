@@ -65,7 +65,6 @@ class PhraseTest < Minitest::Test
     assert_equal counts, phrase.word_count
   end
 
-
   def test_with_apostrophes
     phrase = Phrase.new("First: don't laugh. Then: don't cry.")
     counts = {
@@ -88,5 +87,5 @@ class PhraseTest < Minitest::Test
     phrase = Phrase.new("Louis'")
     counts = { 'louis' => 1 }
     assert_equal counts, phrase.word_count
-  end 
+  end
 end
