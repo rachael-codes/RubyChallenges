@@ -33,6 +33,25 @@ class SumOfMultiples
   end
 end
 
+# Re-done using 'upto' method
+class SumOfMultiples
+  def initialize(*nums)
+    nums.empty? ? @nums = [3, 5] : @nums = nums
+  end
+
+  def self.to(num)
+    SumOfMultiples.new.to(num)
+  end
+
+  def to(upto_num)
+    arr = []
+    1.upto(upto_num - 1) do |n|
+      @nums.any? { |num| arr << n if n % num == 0 }
+    end
+    arr.sum
+  end
+end
+
 # LS solution
 class SumOfMultiples
   attr_reader :multiples

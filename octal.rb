@@ -26,11 +26,11 @@ end
 
 # Refactored
 class Octal
-  def initialize(num)
-    @num = num.match(/[^0-7]/) ? '0' : num
+  def initialize(octal)
+    @octal = octal.scan(/[^0-7]/).size > 0 ? '0' : octal
   end
 
   def to_decimal
-    @num.chars.map(&:to_i).reduce { |sum, num| sum * 8 + num }
+    @octal.to_i.digits.map.with_index { |num, idx| 8**idx * num }.sum
   end
 end

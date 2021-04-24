@@ -40,66 +40,35 @@ class Scrabble
   attr_reader :word
 end
 
-# LS solution (doesn't fail Rubocop)
+# My better solution
 class Scrabble
-  attr_reader :word
+  KEY = { 
+    1 => 'AEIOULNRST',
+    2 => 'DG',
+    3 => 'BCMP',
+    4 => 'FHVWY',
+    5 => 'K',
+    8 => 'JX',
+    10 => 'QZ'
+    }.freeze
 
-  POINTS = {
-    'AEIOULNRST' => 1,
-    'DG' => 2,
-    'BCMP' => 3,
-    'FHVWY' => 4,
-    'K' => 5,
-    'JX' => 8,
-    'QZ' => 10
-  }
   def initialize(word)
-    @word = word ? word : ''
+    @word = word
   end
 
   def score
-    letters = word.upcase.gsub(/[^A-Z]/, '').chars
+    return 0 if @word.nil?
 
-    total = 0
-    letters.each do |letter|
-      POINTS.each do |letter_options, point|
-        total += point if letter_options.include?(letter)
+    score = 0
+    @word.chars.each do |char|
+      KEY.each do |num, letters|
+        score += num if letters.chars.include?(char.upcase)
       end
     end
-    total
+    score
   end
 
   def self.score(word)
     Scrabble.new(word).score
-  end
-end
-
-# A good student solution
-class Scrabble
-  def initialize(word)
-    @word = word.is_a?(String) ? word : ''
-  end
-
-  def self.score(word)
-    Scrabble.new(word).score
-  end
-
-  def score
-    @word.chars.map { |char| letter_value(char) }.sum
-  end
-
-  private
-
-  def letter_value(char) #Note: Rubocop complains about Cyclomatic complexity
-    case char
-    when /[^A-Z]/i then 0
-    when /[AEIOULNRST]/i then 1
-    when /[DG]/i then 2
-    when /[BCMP]/i then 3
-    when /[FHVWY]/i then 4
-    when /[K]/i then 5
-    when /[JX]/i then 8
-    when /[QZ]/i then 10
-    end
   end
 end

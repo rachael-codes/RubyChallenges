@@ -13,7 +13,7 @@
 # 24 is an abundant number since its divisors are 1, 2, 3, 4, 6, 8, and 12 and 1 + 2 + 3 + 4 + 6 + 8 + 12 = 36 which is greater than 24.
 # Prime numbers 7, 13, etc. are always deficient since their only divisor is 1.
 
-# My solution
+# My first solution
 class PerfectNumber
   def self.classify(num)
     raise StandardError.new if num <= 0
@@ -33,6 +33,30 @@ class PerfectNumber
       'deficient'
     end
   end
+end
+
+# My improved solution
+class PerfectNumber
+  def self.classify(num)
+    raise StandardError.new if num < 1
+
+    divisor_sum = get_sum_of_divisors(num)
+    return 'perfect' if divisor_sum == num
+    divisor_sum > num ? 'abundant' : 'deficient'
+  end
+
+  class << self
+    private
+
+    def self.get_sum_of_divisors(num)
+      arr = []
+      counter = num - 1
+      while counter.positive?
+        arr << counter if (num % counter).zero?
+        counter -= 1
+      end
+      arr.sum
+    end
 end
 
 # LS solution
